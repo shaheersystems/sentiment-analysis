@@ -4,12 +4,12 @@ from pydantic import BaseModel
 
 app=FastAPI()
 
-class RequestMode(BaseModel):
+class RequestModel(BaseModel):
     prompt:str
 
 
 @app.post('/sentiment')
-def get_sentiment(request:RequestMode):
+def get_sentiment(request:RequestModel):
     prompt=request.prompt
     sentiment=SentimentAnalysis(prompt)
     return sentiment.get_sentiment()
